@@ -141,7 +141,11 @@ class _TodoListScreenState extends State<TodoListScreen> {
         children: [
           TextFormField(
             controller: todoTitleController,
-            decoration: const InputDecoration(hintText: 'Title'),
+            decoration: const InputDecoration(
+              hintText: 'Title',
+              border: OutlineInputBorder(),
+              label: Text('Title')
+            ),
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter a title';
@@ -152,7 +156,11 @@ class _TodoListScreenState extends State<TodoListScreen> {
           const SizedBox(height: 8),
           TextFormField(
             controller: todoDescriptionController,
-            decoration: const InputDecoration(hintText: 'Description'),
+            decoration: const InputDecoration(
+              label: Text('Description'),
+              hintText: 'Description',
+              border: OutlineInputBorder(),
+            ),
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter a description';
@@ -174,8 +182,22 @@ class _TodoListScreenState extends State<TodoListScreen> {
         itemBuilder: (context, index) {
           final todo = todos[index];
           return ListTile(
-            title: Text(todo.title),
-            subtitle: Text(todo.description),
+            title: Text(
+              todo.title,
+              style: TextStyle(
+                decoration: todo.isDone
+                    ? TextDecoration.lineThrough
+                    : TextDecoration.none,
+              ),
+            ),
+            subtitle: Text(
+              todo.description,
+              style: TextStyle(
+                decoration: todo.isDone
+                    ? TextDecoration.lineThrough
+                    : TextDecoration.none,
+              ),
+            ),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
