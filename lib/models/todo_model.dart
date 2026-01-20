@@ -11,12 +11,13 @@ class TodoItem {
     this.isDone = false,
   });
 
+  // key=column in database, value=field value
   Map<String, Object?> toMap() {
     return {
       'id': id,
       'title': title,
       'description': description,
-      'isDone': isDone ? 1 : 0,
+      'isDone': isDone ? 1 : 0, // sqlite does not have boolean type
     };
   }
 }
