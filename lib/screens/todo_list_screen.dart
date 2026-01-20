@@ -72,6 +72,11 @@ class _TodoListScreenState extends State<TodoListScreen> {
     _loadTodos();
   }
 
+  Future<void> _deleteTodo(int id) async {
+    await dbService.deleteTodoItem(id);
+    _loadTodos();
+  }
+
   void _showAddDialog() {
     todoTitleController.clear();
     todoDescriptionController.clear();
@@ -177,6 +182,10 @@ class _TodoListScreenState extends State<TodoListScreen> {
                 IconButton(
                   icon: const Icon(Icons.edit),
                   onPressed: () => _showEditDialog(todo),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.delete),
+                  onPressed: () => _deleteTodo(todo.id!),
                 ),
                 Checkbox(
                   value: todo.isDone,

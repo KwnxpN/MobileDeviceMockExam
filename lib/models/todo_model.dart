@@ -16,7 +16,7 @@ class TodoItem {
       'id': id,
       'title': title,
       'description': description,
-      'isDone': isDone ? true : false,
+      'isDone': isDone ? 1 : 0,
     };
   }
 }

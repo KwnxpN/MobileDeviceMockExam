@@ -54,7 +54,7 @@ class DatabaseService {
         id: maps[i]['id'],
         title: maps[i]['title'],
         description: maps[i]['description'],
-        isDone: maps[i]['isDone'] =git= 1,
+        isDone: maps[i]['isDone'] == 1,
       );
     });
   }
