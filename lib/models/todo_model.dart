@@ -1,0 +1,22 @@
+class TodoItem {
+  final int? id;
+  final String title;
+  final String description;
+  final bool isDone;
+
+  TodoItem({
+    this.id,
+    required this.title,
+    required this.description,
+    this.isDone = false,
+  });
+
+  Map<String, Object?> toMap() {
+    return {
+      'id': id,
+      'title': title,
+      'description': description,
+      'isDone': isDone ? true : false,
+    };
+  }
+}
